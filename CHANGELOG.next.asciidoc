@@ -234,6 +234,7 @@ automatic splitting at root level, if root level element is an array. {pull}3415
 - Add unix socket log parsing for nginx ingress_controller {pull}34732[34732]
 - Add MySQL authentication message parsing and related.ip & related.user fields
 - Add unix socket log parsing for nginx ingress_controller
+- Add unix socket log parsing for nginx ingress_controller {pull}34732[34732]
 
 *Auditbeat*
 
