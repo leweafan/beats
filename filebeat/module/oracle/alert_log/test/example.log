@@ -1,0 +1,42 @@
+Tue Apr 04 18:13:47 2023
+Recovery of Online Redo Log: Thread 1 Group 6 Seq 301450 Reading mem 0
+  Mem# 0: /oradata/FON5000CBSDB2/redo/redo11sb.log
+Sat Apr 01 21:58:13 2023
+Errors in file /oracle/diag/rdbms/fon5000db7ora1/FON5000DB7ORA1/trace/FON5000DB7ORA1_m000_39545.trc:
+ORA-19815: WARNING: db_recovery_file_dest_size of 429496729600 bytes is 86.10% used, and has 59688293376 remaining bytes available.
+Mon Apr 03 18:00:17 2023
+Errors in file /oracle/diag/rdbms/fon5000db7ora2/FON5000DB7ORA2/trace/FON5000DB7ORA2_arc0_47107.trc: ORA-16401: archive log rejected by Remote File Server (RFS)
+Mon Apr 03 18:00:17 2023
+Error ORA-235 occurred during an un-locked control file transaction. This error can be ignored. The control file transaction will be retried.
+Mon Apr 03 12:26:23 2023
+File 201 not verified due to error ORA-01157
+Wed Feb 15 19:15:27 2023
+WARNING: inbound connection timed out (ORA-3136)
+Wed Feb 08 19:48:10 2023
+Errors in file /oracle/diag/rdbms/fon5000bkcdb01/FON5000BKCDB01/trace/FON5000BKCDB01_arc3_611288.trc:
+ORA-12170: TNS:Connect timeout occurred
+Mon Apr 03 12:26:23 2023
+ALTER SYSTEM ARCHIVE LOG
+Mon Apr 03 11:42:13 2023
+ARCH: Archival disabled due to shutdown: 1089
+Tue Mar 07 17:45:01 2023
+WARNING: inbound connection timed out (ORA-3136)
+Mon Apr 03 11:42:41 2023
+WARNING: STANDBY_FILE_MANAGEMENT initialization parameter is
+not set to the value "AUTO".
+This may cause recovery of the standby database to terminate
+prior to applying all available redo data.
+It may be necessary to use the ALTER DATABASE CREATE DATAFILE
+command to add datafiles created on the primary database.
+**********************************************************************
+WARNING: The LOG_ARCHIVE_CONFIG parameter has NOT been defined but
+remote Data Guard destinations have been configured.  Oracle strongly
+recommends that this parameter is set when using Data Guard as
+described in the Data Guard manuals.
+**********************************************************************
+Starting background process TMON
+Mon Apr 03 03:06:36 2023
+Warning: VKTM detected a time drift.
+Time drifts can result in an unexpected behavior such as time-outs. Please check trace file for more details.
+Thu Feb 02 12:01:44 2023
+ORA-1092 : opitsk aborting process

@@ -1,0 +1,3 @@
+dashboards:
+- id: Filebeat-oracle-alert_log-Dashboard
+  file: Filebeat-oracle-alert_log.json

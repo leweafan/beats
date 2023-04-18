@@ -1,0 +1,9 @@
+- name: alert_log
+  type: group
+  description: >
+    Fields from the Oracle Alert log files.
+  fields:
+    - name: action
+      type: keyword
+    - name: error_code
+      type: integer

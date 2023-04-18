@@ -1,0 +1,11 @@
+- key: oracle
+  title: "oracle"
+  description: >
+    oracle Module
+  fields:
+    - name: oracle
+      type: group
+      description: >
+      fields:
+        - name: message
+          type: text

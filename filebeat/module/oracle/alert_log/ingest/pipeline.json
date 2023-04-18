@@ -1,0 +1,129 @@
+{
+  "description": "Pipeline for parsing oracle alert_log logs",
+  "processors": [
+  {
+    "set": {
+      "value": "{{_ingest.timestamp}}",
+      "field": "event.ingested"
+    }
+  },
+  {
+    "grok": {
+      "field": "message",
+      "patterns": [
+        "^%{ORACLE_TIMESTAMP:temp.timestamp}\\n(%{GREEDYDATA:oracle.message})?"
+      ],
+      "pattern_definitions": {
+	"ORACLE_TIMESTAMP": "%{DAY} %{MONTH}\\s+%{MONTHDAY} %{TIME} %{YEAR}"
+      },
+      "ignore_missing": true,
+      "ignore_failure": true
+    }
+  },
+  {
+    "remove": {
+      "field": "message",
+      "if": "ctx.oracle?.message != null"
+    }
+  },
+  {
+    "rename": {
+      "field": "oracle.message",
+      "target_field": "message"
+    }
+  },  
+  {
+    "grok": {
+      "field": "message",
+      "patterns": [
+        "^%{ORACLE_ACTION:oracle.alert_log.action}"
+      ],
+      "pattern_definitions": {
+	"ORACLE_ACTION": "ALTER|ARCHIVELOG|CREATE|DROP|SHUTDOWN|STARTUP|ARC|ARCH|FAL|SRL|SMON|WARNING"
+      },
+      "ignore_missing": true,
+      "ignore_failure": true
+    }
+  },
+  {
+    "date": {
+      "field": "temp.timestamp",
+      "formats": [
+        "EEE MMM  d HH:mm:ss uuuu",
+	"EEE MMM dd HH:mm:ss uuuu"
+      ],
+      "if": "ctx.event.timezone == null",
+      "on_failure": [
+        {
+          "append": {
+            "field": "error.message",
+            "value": [
+              "{{ _ingest.on_failure_message }}"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "date": {
+      "field": "temp.timestamp",
+      "formats": [
+        "EEE MMM  d HH:mm:ss uuuu",
+	"EEE MMM dd HH:mm:ss uuuu"
+      ],
+      "timezone": "{{ event.timezone }}",
+      "if": "ctx.event.timezone != null",
+      "on_failure": [
+        {
+          "append": {
+            "field": "error.message",
+            "value": [
+              "{{ _ingest.on_failure_message }}"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "split": {
+      "field": "message",
+      "separator": "\n",
+      "target_field": "temp.message"
+    }
+  },
+  {
+    "foreach": {
+      "field": "temp.message",
+      "processor": {
+        "grok": {
+          "field": "_ingest._value",
+          "patterns": [
+            "%{ORACLE_ERROR_CODE}"
+          ],
+          "pattern_definitions": {
+            "ORACLE_ERROR_CODE": "ORA-%{INT:oracle.alert_log.error_code}"
+          },
+          "ignore_missing": true,
+          "ignore_failure": true
+        }
+      }
+    }
+  },
+  {
+    "remove": {
+      "field": [
+        "temp"
+      ],
+      "ignore_missing": true
+    }
+  }
+    ],
+  "on_failure" : [{
+    "set" : {
+      "field" : "error.message",
+      "value" : "{{ _ingest.on_failure_message }}"
+    }
+  }]
+}

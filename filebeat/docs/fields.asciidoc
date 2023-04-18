@@ -70,6 +70,7 @@ grouped in the following categories:
 * <<exported-fields-o365>>
 * <<exported-fields-okta>>
 * <<exported-fields-oracle>>
+* <<exported-fields-oracle>>
 * <<exported-fields-osquery>>
 * <<exported-fields-panw>>
 * <<exported-fields-pensando>>
@@ -112452,6 +112453,47 @@ List of ip_chain objects.
 
 
 type: flattened
+
+--
+
+[[exported-fields-oracle]]
+== oracle fields
+
+oracle Module
+
+
+
+[float]
+=== oracle
+
+
+
+
+*`oracle.message`*::
++
+--
+type: text
+
+--
+
+[float]
+=== alert_log
+
+Fields from the Oracle Alert log files.
+
+
+
+*`oracle.alert_log.action`*::
++
+--
+type: keyword
+
+--
+
+*`oracle.alert_log.error_code`*::
++
+--
+type: integer
 
 --
 

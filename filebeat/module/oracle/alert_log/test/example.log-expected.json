@@ -1,0 +1,195 @@
+[
+    {
+        "@timestamp": "2023-04-04T18:13:47.000-02:00",
+        "event.dataset": "oracle.alert_log",
+        "event.module": "oracle",
+        "event.timezone": "-02:00",
+        "fileset.name": "alert_log",
+        "input.type": "log",
+        "log.flags": [
+            "multiline"
+        ],
+        "log.offset": 0,
+        "message": "Recovery of Online Redo Log: Thread 1 Group 6 Seq 301450 Reading mem 0",
+        "service.type": "oracle"
+    },
+    {
+        "@timestamp": "2023-04-01T21:58:13.000-02:00",
+        "event.dataset": "oracle.alert_log",
+        "event.module": "oracle",
+        "event.timezone": "-02:00",
+        "fileset.name": "alert_log",
+        "input.type": "log",
+        "log.flags": [
+            "multiline"
+        ],
+        "log.offset": 147,
+        "message": "Errors in file /oracle/diag/rdbms/fon5000db7ora1/FON5000DB7ORA1/trace/FON5000DB7ORA1_m000_39545.trc:",
+        "service.type": "oracle"
+    },
+    {
+        "@timestamp": "2023-04-03T18:00:17.000-02:00",
+        "event.dataset": "oracle.alert_log",
+        "event.module": "oracle",
+        "event.timezone": "-02:00",
+        "fileset.name": "alert_log",
+        "input.type": "log",
+        "log.flags": [
+            "multiline"
+        ],
+        "log.offset": 405,
+        "message": "Errors in file /oracle/diag/rdbms/fon5000db7ora2/FON5000DB7ORA2/trace/FON5000DB7ORA2_arc0_47107.trc: ORA-16401: archive log rejected by Remote File Server (RFS)",
+        "oracle.alert_log.error_code": "16401",
+        "service.type": "oracle"
+    },
+    {
+        "@timestamp": "2023-04-03T18:00:17.000-02:00",
+        "event.dataset": "oracle.alert_log",
+        "event.module": "oracle",
+        "event.timezone": "-02:00",
+        "fileset.name": "alert_log",
+        "input.type": "log",
+        "log.flags": [
+            "multiline"
+        ],
+        "log.offset": 591,
+        "message": "Error ORA-235 occurred during an un-locked control file transaction. This error can be ignored. The control file transaction will be retried.",
+        "oracle.alert_log.error_code": "235",
+        "service.type": "oracle"
+    },
+    {
+        "@timestamp": "2023-04-03T12:26:23.000-02:00",
+        "event.dataset": "oracle.alert_log",
+        "event.module": "oracle",
+        "event.timezone": "-02:00",
+        "fileset.name": "alert_log",
+        "input.type": "log",
+        "log.flags": [
+            "multiline"
+        ],
+        "log.offset": 758,
+        "message": "File 201 not verified due to error ORA-01157",
+        "oracle.alert_log.error_code": "01157",
+        "service.type": "oracle"
+    },
+    {
+        "@timestamp": "2023-02-15T19:15:27.000-02:00",
+        "event.dataset": "oracle.alert_log",
+        "event.module": "oracle",
+        "event.timezone": "-02:00",
+        "fileset.name": "alert_log",
+        "input.type": "log",
+        "log.flags": [
+            "multiline"
+        ],
+        "log.offset": 828,
+        "message": "WARNING: inbound connection timed out (ORA-3136)",
+        "oracle.alert_log.action": "WARNING",
+        "oracle.alert_log.error_code": "3136",
+        "service.type": "oracle"
+    },
+    {
+        "@timestamp": "2023-02-08T19:48:10.000-02:00",
+        "event.dataset": "oracle.alert_log",
+        "event.module": "oracle",
+        "event.timezone": "-02:00",
+        "fileset.name": "alert_log",
+        "input.type": "log",
+        "log.flags": [
+            "multiline"
+        ],
+        "log.offset": 902,
+        "message": "Errors in file /oracle/diag/rdbms/fon5000bkcdb01/FON5000BKCDB01/trace/FON5000BKCDB01_arc3_611288.trc:",
+        "service.type": "oracle"
+    },
+    {
+        "@timestamp": "2023-04-03T12:26:23.000-02:00",
+        "event.dataset": "oracle.alert_log",
+        "event.module": "oracle",
+        "event.timezone": "-02:00",
+        "fileset.name": "alert_log",
+        "input.type": "log",
+        "log.flags": [
+            "multiline"
+        ],
+        "log.offset": 1069,
+        "message": "ALTER SYSTEM ARCHIVE LOG",
+        "oracle.alert_log.action": "ALTER",
+        "service.type": "oracle"
+    },
+    {
+        "@timestamp": "2023-04-03T11:42:13.000-02:00",
+        "event.dataset": "oracle.alert_log",
+        "event.module": "oracle",
+        "event.timezone": "-02:00",
+        "fileset.name": "alert_log",
+        "input.type": "log",
+        "log.flags": [
+            "multiline"
+        ],
+        "log.offset": 1119,
+        "message": "ARCH: Archival disabled due to shutdown: 1089",
+        "oracle.alert_log.action": "ARC",
+        "service.type": "oracle"
+    },
+    {
+        "@timestamp": "2023-03-07T17:45:01.000-02:00",
+        "event.dataset": "oracle.alert_log",
+        "event.module": "oracle",
+        "event.timezone": "-02:00",
+        "fileset.name": "alert_log",
+        "input.type": "log",
+        "log.flags": [
+            "multiline"
+        ],
+        "log.offset": 1190,
+        "message": "WARNING: inbound connection timed out (ORA-3136)",
+        "oracle.alert_log.action": "WARNING",
+        "oracle.alert_log.error_code": "3136",
+        "service.type": "oracle"
+    },
+    {
+        "@timestamp": "2023-04-03T11:42:41.000-02:00",
+        "event.dataset": "oracle.alert_log",
+        "event.module": "oracle",
+        "event.timezone": "-02:00",
+        "fileset.name": "alert_log",
+        "input.type": "log",
+        "log.flags": [
+            "multiline"
+        ],
+        "log.offset": 1264,
+        "message": "WARNING: STANDBY_FILE_MANAGEMENT initialization parameter is",
+        "oracle.alert_log.action": "WARNING",
+        "service.type": "oracle"
+    },
+    {
+        "@timestamp": "2023-04-03T03:06:36.000-02:00",
+        "event.dataset": "oracle.alert_log",
+        "event.module": "oracle",
+        "event.timezone": "-02:00",
+        "fileset.name": "alert_log",
+        "input.type": "log",
+        "log.flags": [
+            "multiline"
+        ],
+        "log.offset": 2015,
+        "message": "Warning: VKTM detected a time drift.",
+        "service.type": "oracle"
+    },
+    {
+        "@timestamp": "2023-02-02T12:01:44.000-02:00",
+        "event.dataset": "oracle.alert_log",
+        "event.module": "oracle",
+        "event.timezone": "-02:00",
+        "fileset.name": "alert_log",
+        "input.type": "log",
+        "log.flags": [
+            "multiline"
+        ],
+        "log.offset": 2187,
+        "message": "ORA-1092 : opitsk aborting process",
+        "oracle.alert_log.error_code": "1092",
+        "service.type": "oracle"
+    }
+]
