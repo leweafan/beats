@@ -1,6 +1,6 @@
 [
     {
-        "@timestamp": "2023-04-23T21:40:50.498088928Z",
+        "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.action": "logon-failed",
         "event.category": "authentication",
         "event.dataset": "netapp.audit",
@@ -24,7 +24,7 @@
         "user.name": "admin"
     },
     {
-        "@timestamp": "2023-04-23T21:40:50.498253497Z",
+        "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
         "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8003e8140011966c:8003e81400119689 :: DVT_FAS2750_CLUSTER:ssh :: 10.208.105.45:54819 :: DVT_FAS2750_CLUSTER:admin :: vserver cifs users-and-groups local-group add-members -vserver svmBackup -group-name \"gd\\domain users\" :: Error: \"member-names\" is a required field",
@@ -50,7 +50,7 @@
         "user.name": "admin"
     },
     {
-        "@timestamp": "2023-04-23T21:40:50.498335449Z",
+        "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.action": "logged-in",
         "event.category": "authentication",
         "event.dataset": "netapp.audit",
@@ -78,7 +78,7 @@
         "user.name": "admin"
     },
     {
-        "@timestamp": "2023-04-23T21:40:50.498406260Z",
+        "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
         "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:console :: localhost:unknown :: DVT_FAS2750_CLUSTER:autosupport :: Logging out :: Success ",
@@ -98,7 +98,7 @@
         "user.name": "autosupport"
     },
     {
-        "@timestamp": "2023-04-23T21:40:50.498459336Z",
+        "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
         "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:console :: localhost:unknown :: DVT_FAS2750_CLUSTER:autosupport :: set diag :: Pending",
@@ -118,7 +118,7 @@
         "user.name": "autosupport"
     },
     {
-        "@timestamp": "2023-04-23T21:40:50.498521981Z",
+        "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
         "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:console :: localhost:unknown :: DVT_FAS2750_CLUSTER:autosupport :: system node autosupport modify -node local -ondemand-polling-interval 60 :: Pending ",
@@ -138,7 +138,7 @@
         "user.name": "autosupport"
     },
     {
-        "@timestamp": "2023-04-23T21:40:50.498593506Z",
+        "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
         "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:ontapi :: 10.208.105.45:38322 :: DVT_FAS2750_CLUSTER:admin :: cluster-application-record-modify :: Success: ",
@@ -164,7 +164,7 @@
         "user.name": "admin"
     },
     {
-        "@timestamp": "2023-04-23T21:40:50.498654474Z",
+        "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
         "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:ontapi :: 10.208.105.45:38502 :: DVT_FAS2750_CLUSTER:admin :: <netapp xmlns=\"http://www.netapp.com/filer/admin\" version=\"1.0\" originator_id=\"AIQ_UM\"><cluster-application-record-modify><record-name>app-Active IQ Unified Manager-43d128eb-c540-444c-a038-04c88511dbf1</record-name><record-value>{\"id\":\"43d128eb-c540-444c-a038-04c88511dbf1\",\"url\":\"https://5hw-activeiqmanager.lv.mmt.local:443\",\"version\":\"9.11\",\"dateAdded\":\"2022-08-23 19:32:30.81\",\"platform\":\"Debian GNU/Linux 10 (buster)\",\"hostFQDN\":\"5hw-activeiqmanager.lv.mmt.local\",\"lastCheckin\":\"2023-04-21 17:00:01.213\"}</record-value></cluster-application-record-modify></netapp> :: Pending: ",
@@ -190,7 +190,7 @@
         "user.name": "admin"
     },
     {
-        "@timestamp": "2023-04-23T21:40:50.498753454Z",
+        "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
         "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:ontapi :: 10.208.105.45:58604 :: DVT_FAS2750_CLUSTER:admin :: <netapp xmlns=\"http://www.netapp.com/filer/admin\" version=\"1.0\" originator_id=\"AIQ_UM\"><aggr-check-spare-low/></netapp> :: Pending: ",
@@ -216,7 +216,7 @@
         "user.name": "admin"
     },
     {
-        "@timestamp": "2023-04-23T21:40:50.498815667Z",
+        "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
         "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2183] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:ontapi :: 10.208.105.45:44186 :: DVT_FAS2750_CLUSTER:admin :: aggr-check-spare-low :: Success: ",
@@ -242,7 +242,7 @@
         "user.name": "admin"
     },
     {
-        "@timestamp": "2023-04-23T21:40:50.498880551Z",
+        "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
         "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2388] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:http :: 10.208.105.45:50726 :: DVT_FAS2750_CLUSTER:admin :: POST /api/private/cluster/usage : {\"records\":[{\"name\":\"osm4.network.fcports\",\"count\":1},{\"name\":\"osm4.storage.luns\",\"count\":1}]} :: Pending ",
@@ -271,7 +271,7 @@
         "user.name": "admin"
     },
     {
-        "@timestamp": "2023-04-23T21:40:50.498941925Z",
+        "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
         "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2388] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:http :: 10.208.105.45:50726 :: DVT_FAS2750_CLUSTER:admin :: POST /api/private/cluster/usage : {\"records\":[{\"name\":\"osm4.network.fcports\",\"count\":1},{\"name\":\"osm4.storage.luns\",\"count\":1}]} :: Success: ",
@@ -301,7 +301,7 @@
         "user.name": "admin"
     },
     {
-        "@timestamp": "2023-04-23T21:40:50.498994268Z",
+        "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.action": "logged-in",
         "event.category": "authentication",
         "event.dataset": "netapp.audit",
@@ -335,7 +335,7 @@
         "user.name": "admin"
     },
     {
-        "@timestamp": "2023-04-23T21:40:50.499284543Z",
+        "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.action": "logon-failed",
         "event.category": "authentication",
         "event.dataset": "netapp.audit",
@@ -369,7 +369,7 @@
         "user.name": "admin"
     },
     {
-        "@timestamp": "2023-04-23T21:40:50.500492185Z",
+        "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
         "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:7737] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:http :: 10.208.105.45:51273 :: DVT_FAS2750_CLUSTER:admin :: POST /security/logout HTTP/1.1 :: Success: 200 OK",
@@ -400,7 +400,7 @@
         "user.name": "admin"
     },
     {
-        "@timestamp": "2023-04-23T21:40:50.500612535Z",
+        "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
         "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:7737] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:http :: 10.208.105.45:51273 :: DVT_FAS2750_CLUSTER:admin :: POST /sysmgr/mlogscript HTTP/1.1 :: Success: 200 OK",
@@ -431,7 +431,7 @@
         "user.name": "admin"
     },
     {
-        "@timestamp": "2023-04-23T21:40:50.500719332Z",
+        "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
         "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2064] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:http :: 10.208.105.45:49399 :: DVT_FAS2750_CLUSTER:admin :: DELETE /api/storage/volumes/48b85c1c-d63c-11e9-9811-00a098e40036/snapshots/a2414f9d-6798-4e11-b0ac-6b6eea302fd9 :: Success: ",
@@ -441,7 +441,7 @@
         "input.type": "log",
         "log.offset": 4157,
         "netapp.audit.message": "DELETE /api/storage/volumes/48b85c1c-d63c-11e9-9811-00a098e40036/snapshots/a2414f9d-6798-4e11-b0ac-6b6eea302fd9 :: Success: ",
-        "netapp.audit.message3": "",
+        "netapp.audit.message2": "",
         "process.program": "kern_audit",
         "related.ip": [
             "10.208.105.45"
@@ -461,7 +461,7 @@
         "user.name": "admin"
     },
     {
-        "@timestamp": "2023-04-23T21:40:50.500797807Z",
+        "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.action": "logon-failed",
         "event.category": "authentication",
         "event.dataset": "netapp.audit",

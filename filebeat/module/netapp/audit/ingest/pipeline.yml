@@ -9,16 +9,26 @@ processors:
   - grok:
       field: event.original
       patterns:
-        - '%{CUSTOMTIMESTAMP} \[%{WORD:process.program}:%{WORD}:%{INT}\] ((%{WORD}|%{WORD}:%{WORD}) :: %{WORD}:%{WORD:service.name} :: (%{IP:source.ip}|%{WORD}):(%{INT:source.port}|%{WORD}) :: %{WORD}:%{USERNAME:user.name} :: %{GREEDYDATA:netapp.audit.message}|TIME_INFO::{GREEDYDATA})'
+        - '%{CUSTOMTIMESTAMP:temp.timestamp} \[%{WORD:process.program}:%{WORD}:%{INT}\] ((%{WORD}|%{WORD}:%{WORD}) :: %{WORD}:%{WORD:service.name} :: (%{IP:source.ip}|%{WORD}):(%{INT:source.port}|%{WORD}) :: %{WORD}:%{USERNAME:user.name} :: %{GREEDYDATA:netapp.audit.message}|TIME_INFO::{GREEDYDATA})'
       pattern_definitions:
         CUSTOMTIMESTAMP: "%{DAY} %{MONTH} %{MONTHDAY} %{YEAR} %{TIME} %{ISO8601_TIMEZONE}"
       ignore_missing: true
+  - date:
+      field: temp.timestamp
+      target_field: '@timestamp'
+      formats:
+        - EEE MMM dd yyyy HH:mm:ss ZZZZZ
+      on_failure:
+      - append:
+          field: error.message
+          value: '{{ _ingest.on_failure_message }}'
+      if: "ctx.temp?.timestamp != null"
   - grok:
       field: netapp.audit.message
       patterns:
         - '%{WORD:http.request.method} %{URIPATHPARAM:url.original} HTTP/%{NUMBER:http.version} :: %{STATE:service.state}: %{INT:http.response.status_code} %{GREEDYDATA}'
         - '%{WORD:http.request.method} %{URIPATHPARAM:url.original} : %{GREEDYDATA} :: %{STATE:service.state}(: %{GREEDYDATA:netapp.audit.message2})?'
-        - '%{WORD:http.request.method} %{URIPATHPARAM:url.original} :: %{STATE:service.state}(: %{GREEDYDATA:netapp.audit.message3})?'
+        - '%{WORD:http.request.method} %{URIPATHPARAM:url.original} :: %{STATE:service.state}(: %{GREEDYDATA:netapp.audit.message2})?'
       pattern_definitions:
         STATE: (Pending|Success|Error)
       ignore_missing: true
