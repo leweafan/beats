@@ -1,0 +1,3 @@
+dashboards:
+- id: Filebeat-netapp-audit-Dashboard
+  file: Filebeat-netapp-audit.json

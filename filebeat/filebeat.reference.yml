@@ -287,6 +287,16 @@ filebeat.modules:
     # Filebeat will choose the paths depending on your OS.
     #var.paths:
 
+#-------------------------------- Netapp Module --------------------------------
+- module: netapp
+  # All logs
+  audit:
+    enabled: false
+
+    # Set custom paths for the log files. If left empty,
+    # Filebeat will choose the paths depending on your OS.
+    #var.paths:
+
 #-------------------------------- Nginx Module --------------------------------
 #- module: nginx
   # Access logs

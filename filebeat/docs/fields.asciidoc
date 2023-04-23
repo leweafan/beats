@@ -64,6 +64,7 @@ grouped in the following categories:
 * <<exported-fields-mysql>>
 * <<exported-fields-mysqlenterprise>>
 * <<exported-fields-nats>>
+* <<exported-fields-netapp>>
 * <<exported-fields-netflow>>
 * <<exported-fields-netscout>>
 * <<exported-fields-nginx>>
@@ -95715,6 +95716,47 @@ type: text
 The queue group which subscriber will join
 
 
+type: text
+
+--
+
+[[exported-fields-netapp]]
+== netapp fields
+
+netapp Module
+
+
+
+[float]
+=== netapp
+
+
+
+
+[float]
+=== audit
+
+Contains fields for the Netapp Audit logs.
+
+
+
+*`netapp.audit.message`*::
++
+--
+type: text
+
+--
+
+*`netapp.audit.message2`*::
++
+--
+type: text
+
+--
+
+*`netapp.audit.message3`*::
++
+--
 type: text
 
 --

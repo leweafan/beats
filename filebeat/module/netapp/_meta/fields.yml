@@ -1,0 +1,9 @@
+- key: netapp
+  title: "netapp"
+  description: >
+    netapp Module
+  fields:
+    - name: netapp
+      type: group
+      description: >
+      fields:

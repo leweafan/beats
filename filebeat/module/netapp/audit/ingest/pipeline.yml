@@ -1,0 +1,114 @@
+description: Pipeline for parsing Netapp audit logs. Requires the geoip plugin.
+processors:
+  - set:
+      field: event.ingested
+      value: '{{_ingest.timestamp}}'
+  - rename:
+      field: message
+      target_field: event.original
+  - grok:
+      field: event.original
+      patterns:
+        - '%{CUSTOMTIMESTAMP} \[%{WORD:process.program}:%{WORD}:%{INT}\] ((%{WORD}|%{WORD}:%{WORD}) :: %{WORD}:%{WORD:service.name} :: (%{IP:source.ip}|%{WORD}):(%{INT:source.port}|%{WORD}) :: %{WORD}:%{USERNAME:user.name} :: %{GREEDYDATA:netapp.audit.message}|TIME_INFO::{GREEDYDATA})'
+      pattern_definitions:
+        CUSTOMTIMESTAMP: "%{DAY} %{MONTH} %{MONTHDAY} %{YEAR} %{TIME} %{ISO8601_TIMEZONE}"
+      ignore_missing: true
+  - grok:
+      field: netapp.audit.message
+      patterns:
+        - '%{WORD:http.request.method} %{URIPATHPARAM:url.original} HTTP/%{NUMBER:http.version} :: %{STATE:service.state}: %{INT:http.response.status_code} %{GREEDYDATA}'
+        - '%{WORD:http.request.method} %{URIPATHPARAM:url.original} : %{GREEDYDATA} :: %{STATE:service.state}(: %{GREEDYDATA:netapp.audit.message2})?'
+        - '%{WORD:http.request.method} %{URIPATHPARAM:url.original} :: %{STATE:service.state}(: %{GREEDYDATA:netapp.audit.message3})?'
+      pattern_definitions:
+        STATE: (Pending|Success|Error)
+      ignore_missing: true
+      if: "ctx?.service?.name == 'http'"
+  - grok:
+      field: netapp.audit.message
+      patterns:
+        - '%{GREEDYDATA:netapp.audit.message2} :: %{STATE:service.state}(: %{GREEDYDATA:netapp.audit.message3})?'
+      pattern_definitions:
+        STATE: (Pending|Success|Error)
+      ignore_missing: true
+      if: "ctx?.service?.name != 'http'"
+  - set:
+      field: event.action
+      value: logged-in
+      if: "ctx?.http?.request?.method == 'POST' && ctx?.url?.original == '/security/login' && ctx?.http?.response?.status_code == '200'"
+  - set:
+      field: event.action
+      value: logon-failed
+      if: "ctx?.http?.request?.method == 'POST' && ctx?.url?.original == '/security/login' && ctx?.http?.response?.status_code == '401'"
+  - grok:
+      field: netapp.audit.message3
+      patterns:
+        - '%{AUTH_FAILED:temp.auth_failed}'
+      pattern_definitions:
+        AUTH_FAILED: 'Authentication failed for user public'
+      ignore_missing: true
+      if: "ctx?.service?.name == 'snmp'" 
+  - set:
+      field: event.action
+      value: logon-failed
+      if: "ctx?.temp?.auth_failed != null" 
+  - set:
+      field: event.action
+      value: logged-in
+      if: "ctx?.service?.name == 'ssh' && ctx?.netapp?.audit?.message2 == 'Logging in'" 
+  - set:
+      field: event.action
+      value: logon-failed
+      if: "ctx?.service?.name == 'ssh' && ctx?.netapp?.audit?.message2 == 'Login Attempt'" 
+  - set:
+      field: event.category
+      value: authentication
+      if: "ctx?.event?.action != null && ['logged-in', 'logon-failed'].contains(ctx.event.action)"   
+  - set:
+      field: event.outcome
+      value: success
+      if: "ctx?.event?.action != null && ctx.event.action == 'logged-in'" 
+  - set:
+      field: event.outcome
+      value: failure
+      if: "ctx?.event?.action != null && ctx.event.action == 'logon-failed'" 
+  - append:
+      field: related.ip
+      value: "{{source.ip}}"
+      if: "ctx?.source?.ip != null"
+  - append:
+      field: related.user
+      value: "{{user.name}}"
+      if: "ctx?.user?.name != null"
+  - uri_parts:
+      field: url.original
+      ignore_failure: true
+      if: "ctx?.url?.original != null"
+  - geoip:
+      field: source.ip
+      target_field: source.geo
+      ignore_missing: true
+  - geoip:
+      database_file: GeoLite2-ASN.mmdb
+      field: source.ip
+      target_field: source.as
+      properties:
+      - asn
+      - organization_name
+      ignore_missing: true
+  - rename:
+      field: source.as.asn
+      target_field: source.as.number
+      ignore_missing: true
+  - rename:
+      field: source.as.organization_name
+      target_field: source.as.organization.name
+      ignore_missing: true
+  - remove:
+      field:
+        - message
+        - temp
+      ignore_missing: true
+on_failure:
+  - set:
+      field: error.message
+      value: '{{ _ingest.on_failure_message }}'
