@@ -10,10 +10,9 @@
         "event.timezone": "-02:00",
         "fileset.name": "audit",
         "input.type": "log",
+        "log.level": "error",
         "log.offset": 0,
-        "netapp.audit.message": "Login Attempt :: Error: Unsuccessful attempts since last login :1.",
-        "netapp.audit.message2": "Login Attempt",
-        "netapp.audit.message3": "Unsuccessful attempts since last login :1.",
+        "netapp.audit.message": "Unsuccessful attempts since last login :1.",
         "process.program": "kern_audit",
         "related.user": [
             "admin"
@@ -27,17 +26,16 @@
         "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
-        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8003e8140011966c:8003e81400119689 :: DVT_FAS2750_CLUSTER:ssh :: 10.208.105.45:54819 :: DVT_FAS2750_CLUSTER:admin :: vserver cifs users-and-groups local-group add-members -vserver svmBackup -group-name \"gd\\domain users\" :: Error: \"member-names\" is a required field",
+        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8003e8140011966c:8003e81400119689 :: DVT_FAS2750_CLUSTER:ssh :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:admin :: vserver cifs users-and-groups local-group add-members -vserver svmBackup -group-name \"gd\\domain users\" :: Error: \"member-names\" is a required field",
         "event.timezone": "-02:00",
         "fileset.name": "audit",
         "input.type": "log",
+        "log.level": "error",
         "log.offset": 200,
-        "netapp.audit.message": "vserver cifs users-and-groups local-group add-members -vserver svmBackup -group-name \"gd\\domain users\" :: Error: \"member-names\" is a required field",
-        "netapp.audit.message2": "vserver cifs users-and-groups local-group add-members -vserver svmBackup -group-name \"gd\\domain users\"",
-        "netapp.audit.message3": "\"member-names\" is a required field",
+        "netapp.audit.message": "\"member-names\" is a required field",
         "process.program": "kern_audit",
         "related.ip": [
-            "10.208.105.45"
+            "10.10.10.10"
         ],
         "related.user": [
             "admin"
@@ -45,8 +43,8 @@
         "service.name": "ssh",
         "service.state": "Error",
         "service.type": "netapp",
-        "source.ip": "10.208.105.45",
-        "source.port": "54819",
+        "source.ip": "10.10.10.10",
+        "source.port": "50700",
         "user.name": "admin"
     },
     {
@@ -55,17 +53,16 @@
         "event.category": "authentication",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
-        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2064] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:ssh :: 10.208.105.45:50700 :: DVT_FAS2750_CLUSTER:admin :: Logging in :: Success ",
+        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2064] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:ssh :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:admin :: Logging in :: Success ",
         "event.outcome": "success",
         "event.timezone": "-02:00",
         "fileset.name": "audit",
         "input.type": "log",
-        "log.offset": 519,
-        "netapp.audit.message": "Logging in :: Success ",
-        "netapp.audit.message2": "Logging in",
+        "log.level": "info",
+        "log.offset": 517,
         "process.program": "kern_audit",
         "related.ip": [
-            "10.208.105.45"
+            "10.10.10.10"
         ],
         "related.user": [
             "admin"
@@ -73,9 +70,65 @@
         "service.name": "ssh",
         "service.state": "Success",
         "service.type": "netapp",
-        "source.ip": "10.208.105.45",
+        "source.ip": "10.10.10.10",
         "source.port": "50700",
         "user.name": "admin"
+    },
+    {
+        "@timestamp": "2023-04-22T17:53:25.000Z",
+        "event.action": "logon-failed",
+        "event.category": "authentication",
+        "event.dataset": "netapp.audit",
+        "event.module": "netapp",
+        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8203e814000ad8c8 :: DVT_FAS2750_CLUSTER:ssh :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:admin :: Login Attempt :: Error: Authentication failed.",
+        "event.outcome": "failure",
+        "event.timezone": "-02:00",
+        "fileset.name": "audit",
+        "input.type": "log",
+        "log.level": "error",
+        "log.offset": 692,
+        "netapp.audit.message": "Authentication failed.",
+        "process.program": "kern_audit",
+        "related.ip": [
+            "10.10.10.10"
+        ],
+        "related.user": [
+            "admin"
+        ],
+        "service.name": "ssh",
+        "service.state": "Error",
+        "service.type": "netapp",
+        "source.ip": "10.10.10.10",
+        "source.port": "50700",
+        "user.name": "admin"
+    },
+    {
+        "@timestamp": "2023-04-22T17:53:25.000Z",
+        "event.action": "logon-failed",
+        "event.category": "authentication",
+        "event.dataset": "netapp.audit",
+        "event.module": "netapp",
+        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8203e814000ad8c8 :: DVT_FAS2750_CLUSTER:ssh :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:sherlock :: Login Attempt :: Error: User sherlock doesn't exist.",
+        "event.outcome": "failure",
+        "event.timezone": "-02:00",
+        "fileset.name": "audit",
+        "input.type": "log",
+        "log.level": "error",
+        "log.offset": 891,
+        "netapp.audit.message": "User sherlock doesn't exist.",
+        "process.program": "kern_audit",
+        "related.ip": [
+            "10.10.10.10"
+        ],
+        "related.user": [
+            "sherlock"
+        ],
+        "service.name": "ssh",
+        "service.state": "Error",
+        "service.type": "netapp",
+        "source.ip": "10.10.10.10",
+        "source.port": "50700",
+        "user.name": "sherlock"
     },
     {
         "@timestamp": "2023-04-22T17:53:25.000Z",
@@ -85,9 +138,8 @@
         "event.timezone": "-02:00",
         "fileset.name": "audit",
         "input.type": "log",
-        "log.offset": 696,
-        "netapp.audit.message": "Logging out :: Success ",
-        "netapp.audit.message2": "Logging out",
+        "log.level": "info",
+        "log.offset": 1099,
         "process.program": "kern_audit",
         "related.user": [
             "autosupport"
@@ -105,9 +157,8 @@
         "event.timezone": "-02:00",
         "fileset.name": "audit",
         "input.type": "log",
-        "log.offset": 882,
-        "netapp.audit.message": "set diag :: Pending",
-        "netapp.audit.message2": "set diag",
+        "log.level": "info",
+        "log.offset": 1285,
         "process.program": "kern_audit",
         "related.user": [
             "autosupport"
@@ -125,9 +176,8 @@
         "event.timezone": "-02:00",
         "fileset.name": "audit",
         "input.type": "log",
-        "log.offset": 1064,
-        "netapp.audit.message": "system node autosupport modify -node local -ondemand-polling-interval 60 :: Pending ",
-        "netapp.audit.message2": "system node autosupport modify -node local -ondemand-polling-interval 60",
+        "log.level": "info",
+        "log.offset": 1467,
         "process.program": "kern_audit",
         "related.user": [
             "autosupport"
@@ -141,17 +191,15 @@
         "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
-        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:ontapi :: 10.208.105.45:38322 :: DVT_FAS2750_CLUSTER:admin :: cluster-application-record-modify :: Success: ",
+        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:ontapi :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:admin :: cluster-application-record-modify :: Success: ",
         "event.timezone": "-02:00",
         "fileset.name": "audit",
         "input.type": "log",
-        "log.offset": 1311,
-        "netapp.audit.message": "cluster-application-record-modify :: Success: ",
-        "netapp.audit.message2": "cluster-application-record-modify",
-        "netapp.audit.message3": "",
+        "log.level": "info",
+        "log.offset": 1714,
         "process.program": "kern_audit",
         "related.ip": [
-            "10.208.105.45"
+            "10.10.10.10"
         ],
         "related.user": [
             "admin"
@@ -159,25 +207,23 @@
         "service.name": "ontapi",
         "service.state": "Success",
         "service.type": "netapp",
-        "source.ip": "10.208.105.45",
-        "source.port": "38322",
+        "source.ip": "10.10.10.10",
+        "source.port": "50700",
         "user.name": "admin"
     },
     {
         "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
-        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:ontapi :: 10.208.105.45:38502 :: DVT_FAS2750_CLUSTER:admin :: <netapp xmlns=\"http://www.netapp.com/filer/admin\" version=\"1.0\" originator_id=\"AIQ_UM\"><cluster-application-record-modify><record-name>app-Active IQ Unified Manager-43d128eb-c540-444c-a038-04c88511dbf1</record-name><record-value>{\"id\":\"43d128eb-c540-444c-a038-04c88511dbf1\",\"url\":\"https://5hw-activeiqmanager.lv.mmt.local:443\",\"version\":\"9.11\",\"dateAdded\":\"2022-08-23 19:32:30.81\",\"platform\":\"Debian GNU/Linux 10 (buster)\",\"hostFQDN\":\"5hw-activeiqmanager.lv.mmt.local\",\"lastCheckin\":\"2023-04-21 17:00:01.213\"}</record-value></cluster-application-record-modify></netapp> :: Pending: ",
+        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:ontapi :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:admin :: <netapp xmlns=\"http://www.netapp.com/filer/admin\" version=\"1.0\" originator_id=\"AIQ_UM\"><cluster-application-record-modify><record-name>app-Active IQ Unified Manager-43d128eb-c540-444c-a038-04c88511dbf1</record-name><record-value>{\"id\":\"43d128eb-c540-444c-a038-04c88511dbf1\",\"url\":\"https://5hw-activeiqmanager.lv.mmt.local:443\",\"version\":\"9.11\",\"dateAdded\":\"2022-08-23 19:32:30.81\",\"platform\":\"Debian GNU/Linux 10 (buster)\",\"hostFQDN\":\"5hw-activeiqmanager.lv.mmt.local\",\"lastCheckin\":\"2023-04-21 17:00:01.213\"}</record-value></cluster-application-record-modify></netapp> :: Pending: ",
         "event.timezone": "-02:00",
         "fileset.name": "audit",
         "input.type": "log",
-        "log.offset": 1515,
-        "netapp.audit.message": "<netapp xmlns=\"http://www.netapp.com/filer/admin\" version=\"1.0\" originator_id=\"AIQ_UM\"><cluster-application-record-modify><record-name>app-Active IQ Unified Manager-43d128eb-c540-444c-a038-04c88511dbf1</record-name><record-value>{\"id\":\"43d128eb-c540-444c-a038-04c88511dbf1\",\"url\":\"https://5hw-activeiqmanager.lv.mmt.local:443\",\"version\":\"9.11\",\"dateAdded\":\"2022-08-23 19:32:30.81\",\"platform\":\"Debian GNU/Linux 10 (buster)\",\"hostFQDN\":\"5hw-activeiqmanager.lv.mmt.local\",\"lastCheckin\":\"2023-04-21 17:00:01.213\"}</record-value></cluster-application-record-modify></netapp> :: Pending: ",
-        "netapp.audit.message2": "<netapp xmlns=\"http://www.netapp.com/filer/admin\" version=\"1.0\" originator_id=\"AIQ_UM\"><cluster-application-record-modify><record-name>app-Active IQ Unified Manager-43d128eb-c540-444c-a038-04c88511dbf1</record-name><record-value>{\"id\":\"43d128eb-c540-444c-a038-04c88511dbf1\",\"url\":\"https://5hw-activeiqmanager.lv.mmt.local:443\",\"version\":\"9.11\",\"dateAdded\":\"2022-08-23 19:32:30.81\",\"platform\":\"Debian GNU/Linux 10 (buster)\",\"hostFQDN\":\"5hw-activeiqmanager.lv.mmt.local\",\"lastCheckin\":\"2023-04-21 17:00:01.213\"}</record-value></cluster-application-record-modify></netapp>",
-        "netapp.audit.message3": "",
+        "log.level": "info",
+        "log.offset": 1916,
         "process.program": "kern_audit",
         "related.ip": [
-            "10.208.105.45"
+            "10.10.10.10"
         ],
         "related.user": [
             "admin"
@@ -185,25 +231,23 @@
         "service.name": "ontapi",
         "service.state": "Pending",
         "service.type": "netapp",
-        "source.ip": "10.208.105.45",
-        "source.port": "38502",
+        "source.ip": "10.10.10.10",
+        "source.port": "50700",
         "user.name": "admin"
     },
     {
         "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
-        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:ontapi :: 10.208.105.45:58604 :: DVT_FAS2750_CLUSTER:admin :: <netapp xmlns=\"http://www.netapp.com/filer/admin\" version=\"1.0\" originator_id=\"AIQ_UM\"><aggr-check-spare-low/></netapp> :: Pending: ",
+        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:ontapi :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:admin :: <netapp xmlns=\"http://www.netapp.com/filer/admin\" version=\"1.0\" originator_id=\"AIQ_UM\"><aggr-check-spare-low/></netapp> :: Pending: ",
         "event.timezone": "-02:00",
         "fileset.name": "audit",
         "input.type": "log",
-        "log.offset": 2255,
-        "netapp.audit.message": "<netapp xmlns=\"http://www.netapp.com/filer/admin\" version=\"1.0\" originator_id=\"AIQ_UM\"><aggr-check-spare-low/></netapp> :: Pending: ",
-        "netapp.audit.message2": "<netapp xmlns=\"http://www.netapp.com/filer/admin\" version=\"1.0\" originator_id=\"AIQ_UM\"><aggr-check-spare-low/></netapp>",
-        "netapp.audit.message3": "",
+        "log.level": "info",
+        "log.offset": 2654,
         "process.program": "kern_audit",
         "related.ip": [
-            "10.208.105.45"
+            "10.10.10.10"
         ],
         "related.user": [
             "admin"
@@ -211,25 +255,23 @@
         "service.name": "ontapi",
         "service.state": "Pending",
         "service.type": "netapp",
-        "source.ip": "10.208.105.45",
-        "source.port": "58604",
+        "source.ip": "10.10.10.10",
+        "source.port": "50700",
         "user.name": "admin"
     },
     {
         "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
-        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2183] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:ontapi :: 10.208.105.45:44186 :: DVT_FAS2750_CLUSTER:admin :: aggr-check-spare-low :: Success: ",
+        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2183] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:ontapi :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:admin :: aggr-check-spare-low :: Success: ",
         "event.timezone": "-02:00",
         "fileset.name": "audit",
         "input.type": "log",
-        "log.offset": 2545,
-        "netapp.audit.message": "aggr-check-spare-low :: Success: ",
-        "netapp.audit.message2": "aggr-check-spare-low",
-        "netapp.audit.message3": "",
+        "log.level": "info",
+        "log.offset": 2942,
         "process.program": "kern_audit",
         "related.ip": [
-            "10.208.105.45"
+            "10.10.10.10"
         ],
         "related.user": [
             "admin"
@@ -237,24 +279,24 @@
         "service.name": "ontapi",
         "service.state": "Success",
         "service.type": "netapp",
-        "source.ip": "10.208.105.45",
-        "source.port": "44186",
+        "source.ip": "10.10.10.10",
+        "source.port": "50700",
         "user.name": "admin"
     },
     {
         "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
-        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2388] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:http :: 10.208.105.45:50726 :: DVT_FAS2750_CLUSTER:admin :: POST /api/private/cluster/usage : {\"records\":[{\"name\":\"osm4.network.fcports\",\"count\":1},{\"name\":\"osm4.storage.luns\",\"count\":1}]} :: Pending ",
+        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2388] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:http :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:admin :: POST /api/private/cluster/usage : {\"records\":[{\"name\":\"osm4.network.fcports\",\"count\":1},{\"name\":\"osm4.storage.luns\",\"count\":1}]} :: Pending ",
         "event.timezone": "-02:00",
         "fileset.name": "audit",
         "http.request.method": "POST",
         "input.type": "log",
-        "log.offset": 2736,
-        "netapp.audit.message": "POST /api/private/cluster/usage : {\"records\":[{\"name\":\"osm4.network.fcports\",\"count\":1},{\"name\":\"osm4.storage.luns\",\"count\":1}]} :: Pending ",
+        "log.level": "info",
+        "log.offset": 3131,
         "process.program": "kern_audit",
         "related.ip": [
-            "10.208.105.45"
+            "10.10.10.10"
         ],
         "related.user": [
             "admin"
@@ -262,8 +304,8 @@
         "service.name": "http",
         "service.state": "Pending",
         "service.type": "netapp",
-        "source.ip": "10.208.105.45",
-        "source.port": "50726",
+        "source.ip": "10.10.10.10",
+        "source.port": "50700",
         "url.domain": null,
         "url.original": "/api/private/cluster/usage",
         "url.path": "/api/private/cluster/usage",
@@ -274,17 +316,16 @@
         "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
-        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2388] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:http :: 10.208.105.45:50726 :: DVT_FAS2750_CLUSTER:admin :: POST /api/private/cluster/usage : {\"records\":[{\"name\":\"osm4.network.fcports\",\"count\":1},{\"name\":\"osm4.storage.luns\",\"count\":1}]} :: Success: ",
+        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2388] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:http :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:admin :: POST /api/private/cluster/usage : {\"records\":[{\"name\":\"osm4.network.fcports\",\"count\":1},{\"name\":\"osm4.storage.luns\",\"count\":1}]} :: Success: ",
         "event.timezone": "-02:00",
         "fileset.name": "audit",
         "http.request.method": "POST",
         "input.type": "log",
-        "log.offset": 3032,
-        "netapp.audit.message": "POST /api/private/cluster/usage : {\"records\":[{\"name\":\"osm4.network.fcports\",\"count\":1},{\"name\":\"osm4.storage.luns\",\"count\":1}]} :: Success: ",
-        "netapp.audit.message2": "",
+        "log.level": "info",
+        "log.offset": 3425,
         "process.program": "kern_audit",
         "related.ip": [
-            "10.208.105.45"
+            "10.10.10.10"
         ],
         "related.user": [
             "admin"
@@ -292,8 +333,8 @@
         "service.name": "http",
         "service.state": "Success",
         "service.type": "netapp",
-        "source.ip": "10.208.105.45",
-        "source.port": "50726",
+        "source.ip": "10.10.10.10",
+        "source.port": "50700",
         "url.domain": null,
         "url.original": "/api/private/cluster/usage",
         "url.path": "/api/private/cluster/usage",
@@ -306,7 +347,7 @@
         "event.category": "authentication",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
-        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:7737] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:http :: 10.208.105.45:50672 :: DVT_FAS2750_CLUSTER:admin :: POST /security/login HTTP/1.1 :: Success: 200 OK",
+        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:7737] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:http :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:admin :: POST /security/login HTTP/1.1 :: Success: 200 OK",
         "event.outcome": "success",
         "event.timezone": "-02:00",
         "fileset.name": "audit",
@@ -314,11 +355,11 @@
         "http.response.status_code": "200",
         "http.version": "1.1",
         "input.type": "log",
-        "log.offset": 3329,
-        "netapp.audit.message": "POST /security/login HTTP/1.1 :: Success: 200 OK",
+        "log.level": "info",
+        "log.offset": 3720,
         "process.program": "kern_audit",
         "related.ip": [
-            "10.208.105.45"
+            "10.10.10.10"
         ],
         "related.user": [
             "admin"
@@ -326,8 +367,8 @@
         "service.name": "http",
         "service.state": "Success",
         "service.type": "netapp",
-        "source.ip": "10.208.105.45",
-        "source.port": "50672",
+        "source.ip": "10.10.10.10",
+        "source.port": "50700",
         "url.domain": null,
         "url.original": "/security/login",
         "url.path": "/security/login",
@@ -340,7 +381,7 @@
         "event.category": "authentication",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
-        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2132] 8203e814000ad8c8 :: DVT_FAS2750_CLUSTER:http :: 10.208.105.45:39908 :: DVT_FAS2750_CLUSTER:admin :: POST /security/login HTTP/1.1 :: Error: 401 Unauthorized",
+        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2132] 8203e814000ad8c8 :: DVT_FAS2750_CLUSTER:http :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:sherlock :: POST /security/login HTTP/1.1 :: Error: 401 Unauthorized",
         "event.outcome": "failure",
         "event.timezone": "-02:00",
         "fileset.name": "audit",
@@ -348,42 +389,67 @@
         "http.response.status_code": "401",
         "http.version": "1.1",
         "input.type": "log",
-        "log.offset": 3533,
-        "netapp.audit.message": "POST /security/login HTTP/1.1 :: Error: 401 Unauthorized",
+        "log.level": "error",
+        "log.offset": 3922,
         "process.program": "kern_audit",
         "related.ip": [
-            "10.208.105.45"
+            "10.10.10.10"
         ],
         "related.user": [
-            "admin"
+            "sherlock"
         ],
         "service.name": "http",
         "service.state": "Error",
         "service.type": "netapp",
-        "source.ip": "10.208.105.45",
-        "source.port": "39908",
+        "source.ip": "10.10.10.10",
+        "source.port": "50700",
         "url.domain": null,
         "url.original": "/security/login",
         "url.path": "/security/login",
         "url.scheme": null,
-        "user.name": "admin"
+        "user.name": "sherlock"
     },
     {
         "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
-        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:7737] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:http :: 10.208.105.45:51273 :: DVT_FAS2750_CLUSTER:admin :: POST /security/logout HTTP/1.1 :: Success: 200 OK",
+        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8203e814000ad8c8 :: DVT_FAS2750_CLUSTER:http :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:sherlock :: Login Attempt :: Error: Authentication failed.",
+        "event.timezone": "-02:00",
+        "fileset.name": "audit",
+        "input.type": "log",
+        "log.level": "error",
+        "log.offset": 4135,
+        "netapp.audit.message": "Authentication failed.",
+        "process.program": "kern_audit",
+        "related.ip": [
+            "10.10.10.10"
+        ],
+        "related.user": [
+            "sherlock"
+        ],
+        "service.name": "http",
+        "service.state": "Error",
+        "service.type": "netapp",
+        "source.ip": "10.10.10.10",
+        "source.port": "50700",
+        "user.name": "sherlock"
+    },
+    {
+        "@timestamp": "2023-04-22T17:53:25.000Z",
+        "event.dataset": "netapp.audit",
+        "event.module": "netapp",
+        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:7737] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:http :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:admin :: POST /security/logout HTTP/1.1 :: Success: 200 OK",
         "event.timezone": "-02:00",
         "fileset.name": "audit",
         "http.request.method": "POST",
         "http.response.status_code": "200",
         "http.version": "1.1",
         "input.type": "log",
-        "log.offset": 3745,
-        "netapp.audit.message": "POST /security/logout HTTP/1.1 :: Success: 200 OK",
+        "log.level": "info",
+        "log.offset": 4338,
         "process.program": "kern_audit",
         "related.ip": [
-            "10.208.105.45"
+            "10.10.10.10"
         ],
         "related.user": [
             "admin"
@@ -391,8 +457,8 @@
         "service.name": "http",
         "service.state": "Success",
         "service.type": "netapp",
-        "source.ip": "10.208.105.45",
-        "source.port": "51273",
+        "source.ip": "10.10.10.10",
+        "source.port": "50700",
         "url.domain": null,
         "url.original": "/security/logout",
         "url.path": "/security/logout",
@@ -403,18 +469,18 @@
         "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
-        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:7737] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:http :: 10.208.105.45:51273 :: DVT_FAS2750_CLUSTER:admin :: POST /sysmgr/mlogscript HTTP/1.1 :: Success: 200 OK",
+        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:7737] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:http :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:admin :: POST /sysmgr/mlogscript HTTP/1.1 :: Success: 200 OK",
         "event.timezone": "-02:00",
         "fileset.name": "audit",
         "http.request.method": "POST",
         "http.response.status_code": "200",
         "http.version": "1.1",
         "input.type": "log",
-        "log.offset": 3950,
-        "netapp.audit.message": "POST /sysmgr/mlogscript HTTP/1.1 :: Success: 200 OK",
+        "log.level": "info",
+        "log.offset": 4541,
         "process.program": "kern_audit",
         "related.ip": [
-            "10.208.105.45"
+            "10.10.10.10"
         ],
         "related.user": [
             "admin"
@@ -422,8 +488,8 @@
         "service.name": "http",
         "service.state": "Success",
         "service.type": "netapp",
-        "source.ip": "10.208.105.45",
-        "source.port": "51273",
+        "source.ip": "10.10.10.10",
+        "source.port": "50700",
         "url.domain": null,
         "url.original": "/sysmgr/mlogscript",
         "url.path": "/sysmgr/mlogscript",
@@ -434,17 +500,16 @@
         "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
-        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2064] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:http :: 10.208.105.45:49399 :: DVT_FAS2750_CLUSTER:admin :: DELETE /api/storage/volumes/48b85c1c-d63c-11e9-9811-00a098e40036/snapshots/a2414f9d-6798-4e11-b0ac-6b6eea302fd9 :: Success: ",
+        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2064] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:http :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:admin :: DELETE /api/storage/volumes/48b85c1c-d63c-11e9-9811-00a098e40036/snapshots/a2414f9d-6798-4e11-b0ac-6b6eea302fd9 :: Success: ",
         "event.timezone": "-02:00",
         "fileset.name": "audit",
         "http.request.method": "DELETE",
         "input.type": "log",
-        "log.offset": 4157,
-        "netapp.audit.message": "DELETE /api/storage/volumes/48b85c1c-d63c-11e9-9811-00a098e40036/snapshots/a2414f9d-6798-4e11-b0ac-6b6eea302fd9 :: Success: ",
-        "netapp.audit.message2": "",
+        "log.level": "info",
+        "log.offset": 4746,
         "process.program": "kern_audit",
         "related.ip": [
-            "10.208.105.45"
+            "10.10.10.10"
         ],
         "related.user": [
             "admin"
@@ -452,8 +517,8 @@
         "service.name": "http",
         "service.state": "Success",
         "service.type": "netapp",
-        "source.ip": "10.208.105.45",
-        "source.port": "49399",
+        "source.ip": "10.10.10.10",
+        "source.port": "50700",
         "url.domain": null,
         "url.original": "/api/storage/volumes/48b85c1c-d63c-11e9-9811-00a098e40036/snapshots/a2414f9d-6798-4e11-b0ac-6b6eea302fd9",
         "url.path": "/api/storage/volumes/48b85c1c-d63c-11e9-9811-00a098e40036/snapshots/a2414f9d-6798-4e11-b0ac-6b6eea302fd9",
@@ -462,22 +527,17 @@
     },
     {
         "@timestamp": "2023-04-22T17:53:25.000Z",
-        "event.action": "logon-failed",
-        "event.category": "authentication",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
-        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2132] 8203e814000ad8c8 :: DVT_AFF220_CLUSTER:snmp :: 10.208.105.45:39908 :: DVT_FAS2750_CLUSTER:public :: SNMP Request :: Error: SNMPv1v2c - Authentication failed for user public",
-        "event.outcome": "failure",
+        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2132] 8203e814000ad8c8 :: DVT_FAS2750_CLUSTER:snmp :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:public :: SNMP Request :: Error: SNMPv1v2c - Authentication failed for user public",
         "event.timezone": "-02:00",
         "fileset.name": "audit",
         "input.type": "log",
-        "log.offset": 4437,
-        "netapp.audit.message": "SNMP Request :: Error: SNMPv1v2c - Authentication failed for user public",
-        "netapp.audit.message2": "SNMP Request",
-        "netapp.audit.message3": "SNMPv1v2c - Authentication failed for user public",
+        "log.level": "error",
+        "log.offset": 5024,
         "process.program": "kern_audit",
         "related.ip": [
-            "10.208.105.45"
+            "10.10.10.10"
         ],
         "related.user": [
             "public"
@@ -485,8 +545,32 @@
         "service.name": "snmp",
         "service.state": "Error",
         "service.type": "netapp",
-        "source.ip": "10.208.105.45",
-        "source.port": "39908",
+        "source.ip": "10.10.10.10",
+        "source.port": "50700",
         "user.name": "public"
+    },
+    {
+        "@timestamp": "2023-04-22T17:53:25.000Z",
+        "event.dataset": "netapp.audit",
+        "event.module": "netapp",
+        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8203e814000ad8c8 :: DVT_FAS2750_CLUSTER:snmp :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:sherlock :: SNMP Request :: Error: SNMPv3 authentication failed for user sherlock",
+        "event.timezone": "-02:00",
+        "fileset.name": "audit",
+        "input.type": "log",
+        "log.level": "error",
+        "log.offset": 5251,
+        "process.program": "kern_audit",
+        "related.ip": [
+            "10.10.10.10"
+        ],
+        "related.user": [
+            "sherlock"
+        ],
+        "service.name": "snmp",
+        "service.state": "Error",
+        "service.type": "netapp",
+        "source.ip": "10.10.10.10",
+        "source.port": "50700",
+        "user.name": "sherlock"
     }
 ]

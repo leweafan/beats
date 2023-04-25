@@ -95747,20 +95747,6 @@ type: text
 
 --
 
-*`netapp.audit.message2`*::
-+
---
-type: text
-
---
-
-*`netapp.audit.message3`*::
-+
---
-type: text
-
---
-
 [[exported-fields-netflow]]
 == NetFlow fields
 

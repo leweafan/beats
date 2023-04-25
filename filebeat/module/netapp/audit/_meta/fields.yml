@@ -5,7 +5,3 @@
   fields:
     - name: message
       type: text
-    - name: message2
-      type: text
-    - name: message3
-      type: text

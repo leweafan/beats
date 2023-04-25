@@ -32,5 +32,5 @@ func init() {
 // AssetNetapp returns asset data.
 // This is the base64 encoded zlib format compressed contents of module/netapp.
 func AssetNetapp() string {
-	return "eJycj7EOgjAQhvc+xR92HHTrYGKc9R0ae2BjaRvuSOTtDQKmGHDwxv/6ff2vxIN6jUBiUlKAOPGkUYxBoQBLfGtdEheDxlEBmF7jEm3nSQGVI29Zv3clgmkoMw4jfSKNuo3dnKxYl57cZTrr5JOu6TaV45xjEOMCTz+gii3kTriOh5wGP3yseZdh323yRg0xm5oWu7mX0FN+Qfu/qMM29QoAAP//TSd37g=="
+	return "eJx0j8HOgjAQhO99igl3/gfo4U+MZ32Hxg7YWNqGLom8vcGCKQbnOLP77WyLB2eNQDEpKUCceGo0xWgUYJlvo0viYtD4VwDWaVyinTwV0Dl6m/U7axHMwIq4SOZEjX6M0+YcUPecmmUm6+TjHuF+IovOMYhxIa8X0MURcieu5ZHTwoePff6r1r7b1I0G5mx67rKtl/Ap6hUAAP//M0NexQ=="
 }

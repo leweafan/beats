@@ -9,7 +9,7 @@ processors:
   - grok:
       field: event.original
       patterns:
-        - '%{CUSTOMTIMESTAMP:temp.timestamp} \[%{WORD:process.program}:%{WORD}:%{INT}\] ((%{WORD}|%{WORD}:%{WORD}) :: %{WORD}:%{WORD:service.name} :: (%{IP:source.ip}|%{WORD}):(%{INT:source.port}|%{WORD}) :: %{WORD}:%{USERNAME:user.name} :: %{GREEDYDATA:netapp.audit.message}|TIME_INFO::{GREEDYDATA})'
+        - '%{CUSTOMTIMESTAMP:temp.timestamp} \[%{WORD:process.program}:%{WORD}:%{INT}\] ((%{WORD}|%{WORD}:%{WORD}) :: %{WORD}:%{WORD:service.name} :: (%{IP:source.ip}|%{WORD}):(%{INT:source.port}|%{WORD}) :: %{WORD}:%{USERNAME:user.name} :: %{GREEDYDATA:temp.message}|TIME_INFO::{GREEDYDATA})'
       pattern_definitions:
         CUSTOMTIMESTAMP: "%{DAY} %{MONTH} %{MONTHDAY} %{YEAR} %{TIME} %{ISO8601_TIMEZONE}"
       ignore_missing: true
@@ -24,23 +24,68 @@ processors:
           value: '{{ _ingest.on_failure_message }}'
       if: "ctx.temp?.timestamp != null"
   - grok:
-      field: netapp.audit.message
+      field: temp.message
       patterns:
-        - '%{WORD:http.request.method} %{URIPATHPARAM:url.original} HTTP/%{NUMBER:http.version} :: %{STATE:service.state}: %{INT:http.response.status_code} %{GREEDYDATA}'
-        - '%{WORD:http.request.method} %{URIPATHPARAM:url.original} : %{GREEDYDATA} :: %{STATE:service.state}(: %{GREEDYDATA:netapp.audit.message2})?'
-        - '%{WORD:http.request.method} %{URIPATHPARAM:url.original} :: %{STATE:service.state}(: %{GREEDYDATA:netapp.audit.message2})?'
+        - '%{WORD:http.request.method} %{URIPATHPARAM:url.original} HTTP/%{NUMBER:http.version} :: %{STATE:service.state}: %{INT:http.response.status_code}' 
+        - '%{WORD:http.request.method} %{URIPATHPARAM:url.original} : %{GREEDYDATA} :: %{STATE:service.state}(: %{GREEDYDATA:netapp.audit.message})?'
+        - '%{WORD:http.request.method} %{URIPATHPARAM:url.original} :: %{STATE:service.state}: (%{GREEDYDATA:netapp.audit.message})?'
+        - '%{AUTH_ACTION:temp.auth_action} :: %{STATE:service.state}: (%{GREEDYDATA:netapp.audit.message})?'
       pattern_definitions:
         STATE: (Pending|Success|Error)
+        AUTH_ACTION: Login Attempt
       ignore_missing: true
       if: "ctx?.service?.name == 'http'"
   - grok:
-      field: netapp.audit.message
+      field: temp.message
       patterns:
-        - '%{GREEDYDATA:netapp.audit.message2} :: %{STATE:service.state}(: %{GREEDYDATA:netapp.audit.message3})?'
+        - 'SNMP Request :: %{STATE:service.state}(: %{GREEDYDATA:temp.message})?'
       pattern_definitions:
         STATE: (Pending|Success|Error)
       ignore_missing: true
-      if: "ctx?.service?.name != 'http'"
+      if: "ctx?.service?.name == 'snmp'"
+  - grok:
+      field: netapp.audit.message
+      patterns:
+        - '%{AUTH_FAILED:temp.auth_failed}'
+      pattern_definitions:
+        AUTH_FAILED: 'Authentication failed for user'
+      ignore_missing: true
+      ignore_failure: true
+      if: "ctx?.service?.name == 'snmp' && ctx.netapp?.audit?.message != null"
+  - grok:
+      field: temp.message
+      patterns:
+        - '%{AUTH_ACTION:temp.auth_action} :: %{STATE:service.state}(: %{GREEDYDATA:netapp.audit.message})?'
+        - '%{GREEDYDATA} :: %{STATE:service.state}(: %{GREEDYDATA:netapp.audit.message})?'
+      pattern_definitions:
+        STATE: (Pending|Success|Error)
+        AUTH_ACTION: (Logging in|Login Attempt)
+      ignore_missing: true
+      if: "ctx?.service?.name == 'ssh'"
+  - grok:
+      field: temp.message
+      patterns:
+        - '%{GREEDYDATA} :: %{STATE:service.state}(: %{GREEDYDATA}:netapp.audit.message)?'
+      pattern_definitions:
+        STATE: (Pending|Success|Error)
+      ignore_missing: true
+      if: "ctx?.service?.name == 'ontapi'"
+  - grok:
+      field: temp.message
+      patterns:
+        - '%{GREEDYDATA} :: %{STATE:service.state}(: %{GREEDYDATA:netapp.audit.message})?'
+      pattern_definitions:
+        STATE: (Pending|Success|Error)
+      ignore_missing: true
+      if: "ctx?.service?.name == 'console'"
+  - set:
+      field: log.level
+      value: info
+      if: "ctx.service?.state != 'Error'" 
+  - set:
+      field: log.level
+      value: error
+      if: "ctx.service?.state == 'Error'" 
   - set:
       field: event.action
       value: logged-in
@@ -49,14 +94,6 @@ processors:
       field: event.action
       value: logon-failed
       if: "ctx?.http?.request?.method == 'POST' && ctx?.url?.original == '/security/login' && ctx?.http?.response?.status_code == '401'"
-  - grok:
-      field: netapp.audit.message3
-      patterns:
-        - '%{AUTH_FAILED:temp.auth_failed}'
-      pattern_definitions:
-        AUTH_FAILED: 'Authentication failed for user public'
-      ignore_missing: true
-      if: "ctx?.service?.name == 'snmp'" 
   - set:
       field: event.action
       value: logon-failed
@@ -64,11 +101,11 @@ processors:
   - set:
       field: event.action
       value: logged-in
-      if: "ctx?.service?.name == 'ssh' && ctx?.netapp?.audit?.message2 == 'Logging in'" 
+      if: "ctx?.service?.name == 'ssh' && ctx?.temp?.auth_action == 'Logging in'" 
   - set:
       field: event.action
       value: logon-failed
-      if: "ctx?.service?.name == 'ssh' && ctx?.netapp?.audit?.message2 == 'Login Attempt'" 
+      if: "ctx?.service?.name == 'ssh' && ctx?.temp?.auth_action == 'Login Attempt'" 
   - set:
       field: event.category
       value: authentication
@@ -113,6 +150,11 @@ processors:
       field: source.as.organization_name
       target_field: source.as.organization.name
       ignore_missing: true
+  - remove:
+      field:
+        - netapp.audit.message
+      ignore_missing: true
+      if: "ctx.netapp?.audit?.message == ''"
   - remove:
       field:
         - message
