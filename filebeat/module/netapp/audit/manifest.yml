@@ -1,13 +1,18 @@
 module_version: 1.0
 
 var:
-  - name: paths
-    default:
-      - /example/test.log*
-    os.darwin:
-      - /usr/local/example/test.log*
-    os.windows:
-      - c:/programdata/example/logs/test.log*
+  - name: tags
+    default: [netapp, forwarded]
+  - name: syslog_host
+    default: localhost
+  - name: syslog_port
+    default: 9533
+  - name: input
+    default: udp
 
 ingest_pipeline: ingest/pipeline.yml
 input: config/audit.yml
+
+requires.processors:
+- name: geoip
+  plugin: ingest-geoip
