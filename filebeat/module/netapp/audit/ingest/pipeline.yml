@@ -155,9 +155,13 @@ processors:
         - netapp.audit.message
       ignore_missing: true
       if: "ctx.netapp?.audit?.message == ''"
+  - set:
+      field: message
+      copy_from: netapp.audit.message
+      if: "ctx?.netapp?.audit?.message != null"
   - remove:
       field:
-        - message
+        - netapp.audit.message
         - temp
       ignore_missing: true
 on_failure:

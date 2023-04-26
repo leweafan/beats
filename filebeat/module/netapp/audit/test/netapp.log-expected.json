@@ -12,7 +12,7 @@
         "input.type": "log",
         "log.level": "error",
         "log.offset": 0,
-        "netapp.audit.message": "Unsuccessful attempts since last login :1.",
+        "message": "Unsuccessful attempts since last login :1.",
         "process.program": "kern_audit",
         "related.user": [
             "admin"
@@ -32,7 +32,7 @@
         "input.type": "log",
         "log.level": "error",
         "log.offset": 200,
-        "netapp.audit.message": "\"member-names\" is a required field",
+        "message": "\"member-names\" is a required field",
         "process.program": "kern_audit",
         "related.ip": [
             "10.10.10.10"
@@ -87,7 +87,7 @@
         "input.type": "log",
         "log.level": "error",
         "log.offset": 692,
-        "netapp.audit.message": "Authentication failed.",
+        "message": "Authentication failed.",
         "process.program": "kern_audit",
         "related.ip": [
             "10.10.10.10"
@@ -115,7 +115,7 @@
         "input.type": "log",
         "log.level": "error",
         "log.offset": 891,
-        "netapp.audit.message": "User sherlock doesn't exist.",
+        "message": "User sherlock doesn't exist.",
         "process.program": "kern_audit",
         "related.ip": [
             "10.10.10.10"
@@ -419,7 +419,7 @@
         "input.type": "log",
         "log.level": "error",
         "log.offset": 4135,
-        "netapp.audit.message": "Authentication failed.",
+        "message": "Authentication failed.",
         "process.program": "kern_audit",
         "related.ip": [
             "10.10.10.10"
