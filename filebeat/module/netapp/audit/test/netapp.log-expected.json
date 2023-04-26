@@ -134,12 +134,81 @@
         "@timestamp": "2023-04-22T17:53:25.000Z",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
-        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:console :: localhost:unknown :: DVT_FAS2750_CLUSTER:autosupport :: Logging out :: Success ",
+        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8203e814000ad8c8 :: DVT_FAS2750_CLUSTER:ssh :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:admin :: Logging out :: Success ",
         "event.timezone": "-02:00",
         "fileset.name": "audit",
         "input.type": "log",
         "log.level": "info",
         "log.offset": 1099,
+        "process.program": "kern_audit",
+        "related.ip": [
+            "10.10.10.10"
+        ],
+        "related.user": [
+            "admin"
+        ],
+        "service.name": "ssh",
+        "service.state": "Success",
+        "service.type": "netapp",
+        "source.ip": "10.10.10.10",
+        "source.port": "50700",
+        "user.name": "admin"
+    },
+    {
+        "@timestamp": "2023-04-22T17:53:25.000Z",
+        "event.action": "logged-in",
+        "event.category": "authentication",
+        "event.dataset": "netapp.audit",
+        "event.module": "netapp",
+        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:console :: console :: DVT_FAS2750_CLUSTER:admin :: Logging in :: Success ",
+        "event.outcome": "success",
+        "event.timezone": "-02:00",
+        "fileset.name": "audit",
+        "input.type": "log",
+        "log.level": "info",
+        "log.offset": 1275,
+        "process.program": "kern_audit",
+        "related.user": [
+            "admin"
+        ],
+        "service.name": "console",
+        "service.state": "Success",
+        "service.type": "netapp",
+        "user.name": "admin"
+    },
+    {
+        "@timestamp": "2023-04-22T17:53:25.000Z",
+        "event.action": "logon-failed",
+        "event.category": "authentication",
+        "event.dataset": "netapp.audit",
+        "event.module": "netapp",
+        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:console :: console :: DVT_FAS2750_CLUSTER:admin :: Login Attempt :: Error: Authentication failed.",
+        "event.outcome": "failure",
+        "event.timezone": "-02:00",
+        "fileset.name": "audit",
+        "input.type": "log",
+        "log.level": "error",
+        "log.offset": 1444,
+        "message": "Authentication failed.",
+        "process.program": "kern_audit",
+        "related.user": [
+            "admin"
+        ],
+        "service.name": "console",
+        "service.state": "Error",
+        "service.type": "netapp",
+        "user.name": "admin"
+    },
+    {
+        "@timestamp": "2023-04-22T17:53:25.000Z",
+        "event.dataset": "netapp.audit",
+        "event.module": "netapp",
+        "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:console :: localhost:unknown :: DVT_FAS2750_CLUSTER:autosupport :: Logging out :: Success ",
+        "event.timezone": "-02:00",
+        "fileset.name": "audit",
+        "input.type": "log",
+        "log.level": "info",
+        "log.offset": 1637,
         "process.program": "kern_audit",
         "related.user": [
             "autosupport"
@@ -158,7 +227,7 @@
         "fileset.name": "audit",
         "input.type": "log",
         "log.level": "info",
-        "log.offset": 1285,
+        "log.offset": 1823,
         "process.program": "kern_audit",
         "related.user": [
             "autosupport"
@@ -177,7 +246,7 @@
         "fileset.name": "audit",
         "input.type": "log",
         "log.level": "info",
-        "log.offset": 1467,
+        "log.offset": 2005,
         "process.program": "kern_audit",
         "related.user": [
             "autosupport"
@@ -196,7 +265,7 @@
         "fileset.name": "audit",
         "input.type": "log",
         "log.level": "info",
-        "log.offset": 1714,
+        "log.offset": 2252,
         "process.program": "kern_audit",
         "related.ip": [
             "10.10.10.10"
@@ -220,7 +289,7 @@
         "fileset.name": "audit",
         "input.type": "log",
         "log.level": "info",
-        "log.offset": 1916,
+        "log.offset": 2454,
         "process.program": "kern_audit",
         "related.ip": [
             "10.10.10.10"
@@ -244,7 +313,7 @@
         "fileset.name": "audit",
         "input.type": "log",
         "log.level": "info",
-        "log.offset": 2654,
+        "log.offset": 3192,
         "process.program": "kern_audit",
         "related.ip": [
             "10.10.10.10"
@@ -268,7 +337,7 @@
         "fileset.name": "audit",
         "input.type": "log",
         "log.level": "info",
-        "log.offset": 2942,
+        "log.offset": 3480,
         "process.program": "kern_audit",
         "related.ip": [
             "10.10.10.10"
@@ -293,7 +362,7 @@
         "http.request.method": "POST",
         "input.type": "log",
         "log.level": "info",
-        "log.offset": 3131,
+        "log.offset": 3669,
         "process.program": "kern_audit",
         "related.ip": [
             "10.10.10.10"
@@ -322,7 +391,7 @@
         "http.request.method": "POST",
         "input.type": "log",
         "log.level": "info",
-        "log.offset": 3425,
+        "log.offset": 3963,
         "process.program": "kern_audit",
         "related.ip": [
             "10.10.10.10"
@@ -356,7 +425,7 @@
         "http.version": "1.1",
         "input.type": "log",
         "log.level": "info",
-        "log.offset": 3720,
+        "log.offset": 4258,
         "process.program": "kern_audit",
         "related.ip": [
             "10.10.10.10"
@@ -390,7 +459,7 @@
         "http.version": "1.1",
         "input.type": "log",
         "log.level": "error",
-        "log.offset": 3922,
+        "log.offset": 4460,
         "process.program": "kern_audit",
         "related.ip": [
             "10.10.10.10"
@@ -411,14 +480,17 @@
     },
     {
         "@timestamp": "2023-04-22T17:53:25.000Z",
+        "event.action": "logon-failed",
+        "event.category": "authentication",
         "event.dataset": "netapp.audit",
         "event.module": "netapp",
         "event.original": "Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8203e814000ad8c8 :: DVT_FAS2750_CLUSTER:http :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:sherlock :: Login Attempt :: Error: Authentication failed.",
+        "event.outcome": "failure",
         "event.timezone": "-02:00",
         "fileset.name": "audit",
         "input.type": "log",
         "log.level": "error",
-        "log.offset": 4135,
+        "log.offset": 4673,
         "message": "Authentication failed.",
         "process.program": "kern_audit",
         "related.ip": [
@@ -446,7 +518,7 @@
         "http.version": "1.1",
         "input.type": "log",
         "log.level": "info",
-        "log.offset": 4338,
+        "log.offset": 4876,
         "process.program": "kern_audit",
         "related.ip": [
             "10.10.10.10"
@@ -477,7 +549,7 @@
         "http.version": "1.1",
         "input.type": "log",
         "log.level": "info",
-        "log.offset": 4541,
+        "log.offset": 5079,
         "process.program": "kern_audit",
         "related.ip": [
             "10.10.10.10"
@@ -506,7 +578,7 @@
         "http.request.method": "DELETE",
         "input.type": "log",
         "log.level": "info",
-        "log.offset": 4746,
+        "log.offset": 5284,
         "process.program": "kern_audit",
         "related.ip": [
             "10.10.10.10"
@@ -534,7 +606,7 @@
         "fileset.name": "audit",
         "input.type": "log",
         "log.level": "error",
-        "log.offset": 5024,
+        "log.offset": 5562,
         "process.program": "kern_audit",
         "related.ip": [
             "10.10.10.10"
@@ -558,7 +630,7 @@
         "fileset.name": "audit",
         "input.type": "log",
         "log.level": "error",
-        "log.offset": 5251,
+        "log.offset": 5789,
         "process.program": "kern_audit",
         "related.ip": [
             "10.10.10.10"

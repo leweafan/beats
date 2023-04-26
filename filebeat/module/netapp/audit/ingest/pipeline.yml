@@ -9,7 +9,7 @@ processors:
   - grok:
       field: event.original
       patterns:
-        - '%{CUSTOMTIMESTAMP:temp.timestamp} \[%{WORD:process.program}:%{WORD}:%{INT}\] ((%{WORD}|%{WORD}:%{WORD}) :: %{WORD}:%{WORD:service.name} :: (%{IP:source.ip}|%{WORD}):(%{INT:source.port}|%{WORD}) :: %{WORD}:%{USERNAME:user.name} :: %{GREEDYDATA:temp.message}|TIME_INFO::{GREEDYDATA})'
+        - '%{CUSTOMTIMESTAMP:temp.timestamp} \[%{WORD:process.program}:%{WORD}:%{INT}\] ((%{WORD}|%{WORD}:%{WORD}) :: %{WORD}:%{WORD:service.name} :: ((%{IP:source.ip}|%{WORD}):(%{INT:source.port}|%{WORD})|%{WORD}) :: %{WORD}:%{USERNAME:user.name} :: %{GREEDYDATA:temp.message}|TIME_INFO::{GREEDYDATA})'
       pattern_definitions:
         CUSTOMTIMESTAMP: "%{DAY} %{MONTH} %{MONTHDAY} %{YEAR} %{TIME} %{ISO8601_TIMEZONE}"
       ignore_missing: true
@@ -65,17 +65,21 @@ processors:
   - grok:
       field: temp.message
       patterns:
+        - '%{AUTH_ACTION:temp.auth_action} :: %{STATE:service.state}(: %{GREEDYDATA:netapp.audit.message})?'
         - '%{GREEDYDATA} :: %{STATE:service.state}(: %{GREEDYDATA}:netapp.audit.message)?'
       pattern_definitions:
         STATE: (Pending|Success|Error)
+        AUTH_ACTION: (Logging in|Login Attempt)
       ignore_missing: true
       if: "ctx?.service?.name == 'ontapi'"
   - grok:
       field: temp.message
       patterns:
+        - '%{AUTH_ACTION:temp.auth_action} :: %{STATE:service.state}(: %{GREEDYDATA:netapp.audit.message})?'
         - '%{GREEDYDATA} :: %{STATE:service.state}(: %{GREEDYDATA:netapp.audit.message})?'
       pattern_definitions:
         STATE: (Pending|Success|Error)
+        AUTH_ACTION: (Logging in|Login Attempt)
       ignore_missing: true
       if: "ctx?.service?.name == 'console'"
   - set:
@@ -101,11 +105,11 @@ processors:
   - set:
       field: event.action
       value: logged-in
-      if: "ctx?.service?.name == 'ssh' && ctx?.temp?.auth_action == 'Logging in'" 
+      if: "ctx?.temp?.auth_action == 'Logging in'" 
   - set:
       field: event.action
       value: logon-failed
-      if: "ctx?.service?.name == 'ssh' && ctx?.temp?.auth_action == 'Login Attempt'" 
+      if: "ctx?.temp?.auth_action == 'Login Attempt'" 
   - set:
       field: event.category
       value: authentication

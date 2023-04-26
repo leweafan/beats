@@ -3,6 +3,9 @@ Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8003e8140011966c:8003e814
 Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2064] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:ssh :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:admin :: Logging in :: Success 
 Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8203e814000ad8c8 :: DVT_FAS2750_CLUSTER:ssh :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:admin :: Login Attempt :: Error: Authentication failed.
 Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8203e814000ad8c8 :: DVT_FAS2750_CLUSTER:ssh :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:sherlock :: Login Attempt :: Error: User sherlock doesn't exist.
+Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8203e814000ad8c8 :: DVT_FAS2750_CLUSTER:ssh :: 10.10.10.10:50700 :: DVT_FAS2750_CLUSTER:admin :: Logging out :: Success 
+Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:console :: console :: DVT_FAS2750_CLUSTER:admin :: Logging in :: Success 
+Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:console :: console :: DVT_FAS2750_CLUSTER:admin :: Login Attempt :: Error: Authentication failed.
 Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:console :: localhost:unknown :: DVT_FAS2750_CLUSTER:autosupport :: Logging out :: Success 
 Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:console :: localhost:unknown :: DVT_FAS2750_CLUSTER:autosupport :: set diag :: Pending
 Sat Apr 22 2023 20:53:25 +03:00 [kern_audit:info:2094] 8503e814003dfdf4 :: DVT_FAS2750_CLUSTER:console :: localhost:unknown :: DVT_FAS2750_CLUSTER:autosupport :: system node autosupport modify -node local -ondemand-polling-interval 60 :: Pending 
