@@ -1,0 +1,9 @@
+- key: mikrotik
+  title: "mikrotik"
+  description: >
+    mikrotik Module
+  fields:
+    - name: mikrotik
+      type: group
+      description: >
+      fields:

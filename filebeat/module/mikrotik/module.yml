@@ -1,0 +1,3 @@
+dashboards:
+- id: Filebeat-mikrotik-log-Dashboard
+  file: Filebeat-mikrotik-log.json

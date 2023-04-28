@@ -58,6 +58,7 @@ grouped in the following categories:
 * <<exported-fields-logstash>>
 * <<exported-fields-lumberjack>>
 * <<exported-fields-microsoft>>
+* <<exported-fields-mikrotik>>
 * <<exported-fields-misp>>
 * <<exported-fields-mongodb>>
 * <<exported-fields-mssql>>
@@ -93638,6 +93639,33 @@ The devices related to the investigation.
 
 
 type: flattened
+
+--
+
+[[exported-fields-mikrotik]]
+== mikrotik fields
+
+mikrotik Module
+
+
+
+[float]
+=== mikrotik
+
+
+
+
+[float]
+=== log
+
+Contains fields for the Mikrotik logs.
+
+
+
+*`mikrotik.log.prefix`*::
++
+--
+type: keyword
 
 --
 

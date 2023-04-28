@@ -1,0 +1,7 @@
+- name: log
+  type: group
+  description: >
+    Contains fields for the Mikrotik logs.
+  fields:
+    - name: prefix
+      type: keyword
