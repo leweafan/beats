@@ -1,0 +1,37 @@
+<190>Apr 28 21:54:41 4srv-dci01 65.49.20.78 peer sent packet for dead phase2
+<190>Apr 28 21:54:41 4srv-dci01 BLOCK BruteForce BruteForcersDe: in:NIC1-INET out:(unknown 0), src-mac c0:42:d0:d5:e7:c0, proto TCP (SYN), 65.49.20.78:63321->91.228.165.160:8443, len 60
+<190>Apr 28 21:54:41 4srv-dci01 BLOCK Honeypot prerouting: in:NIC1-INET out:(unknown 0), src-mac c0:42:d0:d5:e7:c0, proto TCP (SYN), 170.130.187.42:59376->91.228.165.160:21, len 44
+<190>Apr 28 21:54:41 4srv-dci01 DENY VDO Filter-ext-DC: in:NIC2-IX out:gre-to-5srv-dci02, src-mac 00:50:56:80:92:99, proto TCP (SYN), 172.28.24.30:52792->172.25.18.30:80, len 60
+<190>Apr 28 21:54:41 4srv-dci01 DROP DENY forward: in:gre-to-9srv-dci01 out:NIC2-IX, proto TCP (SYN), 10.246.109.181:50522->10.246.103.200:9092, len 60
+<190>Apr 28 21:54:41 4srv-dci01 DROP INPUT input: in:NIC1-INET out:(unknown 0), src-mac 00:50:56:89:14:19, proto UDP, 65.49.20.78:5678->255.255.255.255:5678, len 148
+<190>Apr 28 21:54:41 4srv-dci01 DROP INPUT input: in:NIC1-INET out:(unknown 0), src-mac d8:b1:22:1b:17:00, proto TCP (SYN), 65.49.20.78:48831->91.228.165.160:49423, len 40
+<190>Apr 28 21:54:41 4srv-dci01 DROP INPUT input: in:gre-to-BY4-RT01-INET out:(unknown 0), proto UDP, 10.253.0.134:49252->10.253.0.133:3784, len 52
+<190>Apr 28 21:54:41 4srv-dci01 DROP INPUT input: in:vlan111 out:(unknown 0), src-mac 00:00:5e:00:01:6f, proto 112, 10.253.11.252->224.0.0.18, len 32
+<190>Apr 28 21:54:41 4srv-dci01 DROP INVALID forward: in:vrrp-LAN out:NIC4-INET, src-mac 00:50:56:b3:58:20, proto TCP (ACK,FIN,PSH), 172.28.24.81:443->91.228.165.160:6001, len 83
+<190>Apr 28 21:54:41 4srv-dci01 DROP INVALID forward: in:vrrp-LAN out:NIC4-INET, src-mac 00:50:56:b3:58:20, proto TCP (RST), 172.28.24.81:443->91.228.165.160:22475, len 40
+<190>Apr 28 21:54:41 4srv-dci01 LAST MASQ srcnat: in:(unknown 0) out:NIC3-INET, src-mac 00:50:56:b5:46:03, proto UDP, 172.21.40.27:53->10.253.29.219:55509, len 71
+<190>Apr 28 21:54:41 4srv-dci01 LAST MASQ srcnat: in:(unknown 0) out:NIC3-INET, src-mac ec:94:d5:87:eb:af, proto ICMP (type 8, code 0), 172.21.30.60->10.253.25.11, len 84
+<190>Apr 28 21:54:41 4srv-dci01 LOG IKE  input: in:WAN-VRRP out:(unknown 0), src-mac 08:05:e2:ff:c0:4d, proto UDP, 65.49.20.78:500->91.228.165.160:500, len 120
+<190>Apr 28 21:54:41 4srv-dci01 OVPN Server settings changed by admin
+<190>Apr 28 21:54:41 4srv-dci01 XD forward XD-Filter: in:vrrp10 out:gre-LV-DCI02, src-mac 00:50:56:91:bc:df, proto TCP (SYN), 10.253.10.1:64884->10.232.105.9:80, len 48
+<190>Apr 28 21:54:41 4srv-dci01 ZABIL DROP FWD forward: in:gre-to-9hw-mmtdci02 out:NIC1-INET, proto 47, 65.49.20.78->91.228.165.160, len 24
+<190>Apr 28 21:54:41 4srv-dci01 bgp peer peer18 changed by admin
+<187>Apr 28 21:54:41 4srv-dci01 login failure for user sherlock from 10.10.10.10 via ssh
+<190>Apr 28 21:54:41 4srv-dci01 ppp secret <sherlock> changed by admin
+<190>Apr 28 21:54:41 4srv-dci01 user sherlock logged in from 10.10.10.10 via ssh
+<190>Apr 28 21:54:41 4srv-dci01 user sherlock logged out from 10.10.10.10 via ssh
+<190>Apr 28 21:54:41 4srv-dci01 user sherlock logged in from 10.10.10.10 via api
+<190>Apr 28 21:54:41 4srv-dci01 user sherlock logged out from 10.10.10.10 via api
+<190>Apr 28 21:54:41 4srv-dci01 DROP CC-Filter forward: in:gre-BY4-main out:NIC1-LAN, proto UDP, 10.253.30.251:55620->172.21.16.40:9060, len 270
+<190>Apr 28 21:54:41 4srv-dci01 OSPFv2 neighbor 10.20.20.20: state change from 2-Way to Down
+<190>Apr 28 21:54:41 4srv-dci01 in:NIC1-LAN out:(unknown 0), proto UDP, [fe80::250:56ff:fe80:abe4]:5678->[ff02::1]:5678, len 124
+<190>Apr 28 21:54:41 4srv-dci01 in:NIC3-INET-CIREX out:(unknown 0), src-mac 00:50:56:80:ad:a3, proto UDP, [fe80::250:56ff:fe80:ada3]:5678->[ff02::1]:5678, len 131
+<187>Apr 28 21:54:41 4srv-dci01 phase1 negotiation failed due to send error. 65.49.20.78[500]<=>23.111.106.203[500] c931367c9915c387:0000000000000000
+<190>Apr 28 21:54:41 4srv-dci01 initiate new phase 1 (Identity Protection): 65.49.20.78[500]<=>23.111.106.203[500]
+<190>Apr 28 21:54:41 4srv-dci01 Failed to open TCP connection: No route to host
+<190>Apr 28 21:54:41 4srv-dci01 ISAKMP-SA established 65.49.20.78[500]-91.228.165.160[500] spi:e087fdb7d757063c:4562bbf0e0f8d6d9
+<190>Apr 28 21:54:41 4srv-dci01 ZABIL DROP FWD forward: in:vrrp-WAN out:NIC1-INET, src-mac 94:f7:ad:19:87:9c, proto TCP (ACK,FIN), 65.49.20.78:443->10.219.109.202:55153, NAT 65.49.20.78:443->(91.228.165.160:55153->10.219.109.202:55153), len 40
+<187>Apr 28 21:54:41 4srv-dci01 91.228.165.160 failed to get valid proposal
+<188>Apr 28 21:54:41 4srv-dci01 91.228.165.160 failed to pre-process ph1 packet (side: 1, status 1).
+<188>Apr 28 21:54:41 4srv-dci01 91.228.165.160 parsing packet failed, possible cause: wrong password
+
