@@ -56,8 +56,8 @@ processors:
       patterns:
       - '%{IP:source.ip} peer sent packet for dead phase2'
       - 'ppp secret <%{USERNAME:destination.user.name}> changed by %{USERNAME:user.name}'
-      - 'login failure for user %{USERNAME:user.name} from %{IP:source.ip} via ssh'
-      - 'user %{USERNAME:user.name} logged in from %{IP:source.ip} via (api|ssh)'
+      - '%{AUTH_FAILED:temp.auth_failed} for user %{USERNAME:user.name} from %{IP:source.ip} via ssh'
+      - 'user %{USERNAME:user.name} %{AUTH_SUCCESS:temp.auth_success} from %{IP:source.ip} via (api|ssh)'
       - 'user %{USERNAME:user.name} logged out from %{IP:source.ip} via (api|ssh)'
       - 'user %{USERNAME:destination.user.name} (added|changed|removed) by %{USERNAME:user.name}'
       - 'initiate new phase %{INT} \(Identity Protection\): %{IP:source.ip}\[%{INT}\]<=>%{IP:destination.ip}\[%{INT}\]'
@@ -79,6 +79,8 @@ processors:
       - 'device changed'
       pattern_definitions:
         PROTOCOL: (UDP|TCP|ICMP)
+        AUTH_SUCCESS: 'logged in'
+        AUTH_FAILED: 'login failure'
       ignore_failure: true
       if: "ctx.temp?.proto == null"
   - lowercase:
@@ -136,6 +138,26 @@ processors:
         } else if (iana_number == '132') {
             ctx.network.transport = 'sctp';
         }
+  - set:
+      field: event.action
+      value: logon-failed
+      if: "ctx?.temp?.auth_failed != null" 
+  - set:
+      field: event.action
+      value: logged-in
+      if: "ctx?.temp?.auth_success != null"
+  - append:
+      field: event.category
+      value: authentication
+      if: "ctx?.event?.action != null && ['logged-in', 'logon-failed'].contains(ctx.event.action)"   
+  - set:
+      field: event.outcome
+      value: success
+      if: "ctx?.event?.action != null && ctx.event.action == 'logged-in'" 
+  - set:
+      field: event.outcome
+      value: failure
+      if: "ctx?.event?.action != null && ctx.event.action == 'logon-failed'" 
   - geoip:
       field: source.ip
       target_field: source.geo
